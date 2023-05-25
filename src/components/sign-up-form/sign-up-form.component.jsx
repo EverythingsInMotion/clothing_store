@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -6,6 +6,7 @@ import {
 import FormInput from "../../components/form-input/form-input.component";
 import "./sign-up-form.styles.scss";
 import Button from "../button/Button.component";
+import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   displayName: "",
@@ -17,6 +18,8 @@ const defaultFormFields = {
 const SignUpForm = (props) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+
+  // const { setCurrentUser } = useContext(UserContext);
 
   const inputChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -39,9 +42,11 @@ const SignUpForm = (props) => {
         email,
         password
       );
-      const userDocRef = await createUserDocumentFromAuth(user, {
+      await createUserDocumentFromAuth(user, {
         displayName: displayName,
       });
+
+      // setCurrentUser(user);
 
       setFormFields(defaultFormFields);
     } catch (error) {
@@ -91,29 +96,6 @@ const SignUpForm = (props) => {
         />
 
         <Button type="submit">Sign Up</Button>
-      </form>
-    </>
-  );
-
-  const signUpWithAccount = (
-    <>
-      <form>
-        <FormInput
-          label="email"
-          type="email"
-          required
-          onChange={inputChangeHandler}
-          name="email"
-          value={email}
-        />
-        <FormInput
-          label="Confirm Password"
-          type="password"
-          required
-          onChange={inputChangeHandler}
-          name="confirmPassword"
-          value={confirmPassword}
-        />
       </form>
     </>
   );
