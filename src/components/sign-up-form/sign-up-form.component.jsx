@@ -52,8 +52,8 @@ const SignUpForm = (props) => {
     }
   };
 
-  return (
-    <div className="sign-up-container">
+  const noAccountSignUp = (
+    <>
       <h2>Dont have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={formSubmitHandler}>
@@ -90,12 +90,35 @@ const SignUpForm = (props) => {
           value={confirmPassword}
         />
 
-        <Button buttonType="google" type="submit">
-          Sign Up
-        </Button>
+        <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </>
   );
+
+  const signUpWithAccount = (
+    <>
+      <form>
+        <FormInput
+          label="email"
+          type="email"
+          required
+          onChange={inputChangeHandler}
+          name="email"
+          value={email}
+        />
+        <FormInput
+          label="Confirm Password"
+          type="password"
+          required
+          onChange={inputChangeHandler}
+          name="confirmPassword"
+          value={confirmPassword}
+        />
+      </form>
+    </>
+  );
+
+  return <div className="sign-up-container">{noAccountSignUp}</div>;
 };
 
 export default SignUpForm;
