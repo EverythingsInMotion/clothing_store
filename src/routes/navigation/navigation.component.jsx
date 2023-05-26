@@ -13,7 +13,7 @@ const Navigation = (props) => {
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   const cartDropdownHandler = () => {
-    setIsCartOpen((prevState) => setIsCartOpen(!prevState));
+    setIsCartOpen(!isCartOpen);
   };
 
   return (
