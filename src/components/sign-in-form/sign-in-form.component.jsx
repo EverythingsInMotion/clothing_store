@@ -5,7 +5,7 @@ import {
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
-import "./sign-in-form.styles.scss";
+import styles from "./sign-in-form.module.css";
 import Button from "../button/Button.component";
 import { UserContext } from "../../contexts/user.context";
 
@@ -81,10 +81,8 @@ const SignInForm = (props) => {
           name="password"
           value={password}
         />
-        <div className="buttons-container">
+        <div className={styles.buttonsContainer}>
           <Button type="submit">Sign In</Button>
-          <br />
-          <p>Or</p>
           <Button type="button" buttonType="google" onClick={logGoogleUser}>
             Google Sign In
           </Button>
@@ -93,7 +91,7 @@ const SignInForm = (props) => {
     </>
   );
 
-  return <div className="sign-up-container">{signUpWithAccount}</div>;
+  return <div className={styles.signUpContainer}>{signUpWithAccount}</div>;
 };
 
 export default SignInForm;

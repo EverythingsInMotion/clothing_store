@@ -4,7 +4,7 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../../components/form-input/form-input.component";
-import "./sign-up-form.styles.scss";
+import styles from "./sign-up-form.module.css";
 import Button from "../button/Button.component";
 import { UserContext } from "../../contexts/user.context";
 
@@ -100,7 +100,7 @@ const SignUpForm = (props) => {
     </>
   );
 
-  return <div className="sign-up-container">{noAccountSignUp}</div>;
+  return <div className={styles.signUpContainer}>{noAccountSignUp}</div>;
 };
 
 export default SignUpForm;

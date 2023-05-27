@@ -1,7 +1,7 @@
 import React, { Component, useContext, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as SiteLogo } from "../../assets/crown.svg";
-import "./navigation.styles.scss";
+import styles from "./navigation.module.css";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
@@ -18,20 +18,20 @@ const Navigation = (props) => {
 
   return (
     <>
-      <div className="navigation">
-        <Link className="logo-container" to="/">
-          <SiteLogo className="logo" />
+      <div className={styles.navigation}>
+        <Link className={styles.logoContainer} to="/">
+          <SiteLogo className={styles.logo} />
         </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
-            SHOP
+        <div className={styles.navLinksContainer}>
+          <Link className={styles.navLink} to="/shop">
+            Shop
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>
+            <span className={styles.navLink} onClick={signOutUser}>
               SIGN OUT
             </span>
           ) : (
-            <Link className="nav-link" to="/auth">
+            <Link className={styles.navLink} to="/auth">
               SIGN IN
             </Link>
           )}
