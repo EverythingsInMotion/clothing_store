@@ -26,7 +26,7 @@ const Checkout = (props) => {
       {cartItems.map((item) => (
         <CheckoutItem key={item.id} item={item} />
       ))}
-      <span className="total">Total : ${totalCost.toFixed(2)}</span>
+      <span className={styles.total}>Total : ${totalCost.toFixed(2)}</span>
     </div>
   );
 };
